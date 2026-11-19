@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <color name="screen_background">#FFF5F7FA</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="summary_card_background">#FFE8F0FE</color>
+    <color name="on_surface">#FF172033</color>
+    <color name="on_surface_variant">#FF5E6878</color>
+    <color name="status_fresh">#FF24744B</color>
+    <color name="status_expiring">#FFB05B00</color>
+    <color name="status_expired">#FFB3261E</color>
+    <color name="status_unknown">#FF687078</color>
+</resources>

@@ -16,4 +16,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "FridgeManager"
 include(":app")
+include(":dashboard")
  

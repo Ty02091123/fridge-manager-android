@@ -12,6 +12,8 @@
     <string name="check_started">正在扫描库存，有临期食材时会发送通知</string>
     <string name="notification_permission_denied">通知权限未开启，扫描仍会执行，但无法显示提醒</string>
     <string name="smart_recipes">按现有食材推荐菜谱</string>
+    <string name="open_dashboard">打开食材数据看板</string>
+    <string name="dashboard_not_installed">未检测到数据看板模块，请先在 Android Studio 中安装 dashboard</string>
     <string name="empty_inventory_title">冰箱还是空的</string>
     <string name="empty_inventory_hint">点击右下角的加号，记录第一份食材。</string>
 

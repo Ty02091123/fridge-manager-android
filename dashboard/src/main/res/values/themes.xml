@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.FridgeDashboard" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/surface</item>
+        <item name="colorPrimary">#FF2F6B4F</item>
+        <item name="colorSecondary">#FF3F6A9A</item>
+    </style>
+</resources>

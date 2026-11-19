@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnRecipes.setOnClickListener {
             startActivity(Intent(this, RecipeActivity::class.java))
         }
+        binding.btnDashboard.setOnClickListener { openDashboard() }
 
         ExpiryReminderScheduler.schedule(this)
         requestNotificationPermissionIfNeeded()
@@ -199,5 +200,22 @@ class MainActivity : AppCompatActivity() {
     private fun startExpiryCheck() {
         ExpiryReminderScheduler.checkNow(this)
         Snackbar.make(binding.root, R.string.check_started, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun openDashboard() {
+        val launchIntent = packageManager.getLaunchIntentForPackage(DASHBOARD_PACKAGE)
+        if (launchIntent == null) {
+            Snackbar.make(
+                binding.root,
+                R.string.dashboard_not_installed,
+                Snackbar.LENGTH_LONG
+            ).show()
+            return
+        }
+        startActivity(launchIntent)
+    }
+
+    companion object {
+        private const val DASHBOARD_PACKAGE = "com.fridge.dashboard"
     }
 }

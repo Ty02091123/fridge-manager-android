@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">食材数据看板</string>
+    <string name="dashboard_title">食材数据看板</string>
+    <string name="dashboard_module_badge">伴生模块 · 读取主 App 数据</string>
+    <string name="dashboard_loading">正在通过数据接口读取库存…</string>
+    <string name="dashboard_summary">共 %1$d 种 · %2$d 件 · 临期 %3$d · 过期 %4$d</string>
+    <string name="dashboard_error_summary">数据读取失败</string>
+    <string name="dashboard_error_title">无法连接主 App</string>
+    <string name="dashboard_error_hint">请确认“冰箱管家”已经安装并至少打开过一次。</string>
+    <string name="main_app_not_installed">未找到主 App，请先安装“冰箱管家”。</string>
+    <string name="open_main_app">打开主 App</string>
+    <string name="refresh">刷新数据</string>
+    <string name="retry">重试</string>
+    <string name="empty_title">主 App 中还没有食材</string>
+    <string name="empty_hint">到“冰箱管家”中添加食材后，这里会自动汇总。</string>
+    <string name="food_meta">%1$s · %2$d 件 · %3$s</string>
+    <string name="status_fresh">新鲜</string>
+    <string name="status_expiring">%1$d 天后过期</string>
+    <string name="status_expired">已过期</string>
+    <string name="status_unknown">日期异常</string>
+</resources>
