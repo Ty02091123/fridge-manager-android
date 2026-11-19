@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit
 object DashboardDateUtils {
     private val format = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
 
+    fun todayText(): String = synchronized(format) { format.format(Date()) }
+
     fun daysUntil(expireDate: String): Int? = synchronized(format) {
         val expiry = parse(expireDate) ?: return@synchronized null
         val today = Calendar.getInstance().apply {

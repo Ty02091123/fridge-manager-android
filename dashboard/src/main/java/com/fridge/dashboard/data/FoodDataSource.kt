@@ -37,4 +37,13 @@ object FoodDataSource {
         }
         items
     }
+
+    suspend fun deleteExpired(context: Context, today: String): Int =
+        withContext(Dispatchers.IO) {
+            context.contentResolver.delete(
+                contentUri,
+                "expireDate < ?",
+                arrayOf(today)
+            )
+        }
 }
