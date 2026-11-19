@@ -1,10 +1,14 @@
 package com.fridge.fridgeapp
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fridge.fridgeapp.database.Food
 import com.fridge.fridgeapp.database.AppDatabase
 import com.fridge.fridgeapp.databinding.ActivityMainBinding
+import com.fridge.fridgeapp.notification.ExpiryReminderScheduler
 import com.fridge.fridgeapp.ui.FoodAdapter
 import com.fridge.fridgeapp.util.ExpiryUtils
 import com.fridge.fridgeapp.viewmodel.FoodViewModel
@@ -33,6 +38,19 @@ class MainActivity : AppCompatActivity() {
     ) { result ->
         if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
         saveFormResult(result.data ?: return@registerForActivityResult)
+    }
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            startExpiryCheck()
+        } else {
+            Snackbar.make(
+                binding.root,
+                R.string.notification_permission_denied,
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +77,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnAdd.setOnClickListener { openFoodForm() }
+        binding.btnCheckNow.setOnClickListener { requestExpiryCheck() }
+
+        ExpiryReminderScheduler.schedule(this)
+        requestNotificationPermissionIfNeeded()
     }
 
     private fun openFoodForm(food: Food? = null) {
@@ -117,5 +139,34 @@ class MainActivity : AppCompatActivity() {
         )
         binding.emptyState.visibility =
             if (foods.isEmpty()) android.view.View.VISIBLE else android.view.View.GONE
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
+    private fun requestExpiryCheck() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        } else {
+            startExpiryCheck()
+        }
+    }
+
+    private fun startExpiryCheck() {
+        ExpiryReminderScheduler.checkNow(this)
+        Snackbar.make(binding.root, R.string.check_started, Snackbar.LENGTH_SHORT).show()
     }
 }

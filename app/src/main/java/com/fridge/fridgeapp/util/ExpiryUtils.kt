@@ -10,7 +10,9 @@ import java.util.concurrent.TimeUnit
 object ExpiryUtils {
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
 
-    fun todayText(): String = dateFormat.format(Date())
+    fun todayText(): String = synchronized(dateFormat) {
+        dateFormat.format(Date())
+    }
 
     fun daysUntilExpiry(expireDate: String): Int? {
         val expiry = parseDate(expireDate) ?: return null
@@ -34,11 +36,13 @@ object ExpiryUtils {
     }
 
     private fun parseDate(value: String): Date? {
-        return try {
-            dateFormat.isLenient = false
-            dateFormat.parse(value)
-        } catch (_: ParseException) {
-            null
+        return synchronized(dateFormat) {
+            try {
+                dateFormat.isLenient = false
+                dateFormat.parse(value)
+            } catch (_: ParseException) {
+                null
+            }
         }
     }
 }

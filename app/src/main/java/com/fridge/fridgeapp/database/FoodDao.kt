@@ -14,6 +14,9 @@ interface FoodDao {
     @Query("SELECT * FROM food ORDER BY expireDate ASC")
     fun getAllFood(): Flow<List<Food>>
 
+    @Query("SELECT * FROM food")
+    suspend fun getAllFoodOnce(): List<Food>
+
     // 根据id查询
     @Query("SELECT * FROM food WHERE id = :foodId")
     fun getFoodById(foodId: Int): Flow<Food>

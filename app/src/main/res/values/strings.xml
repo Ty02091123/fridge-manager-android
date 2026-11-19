@@ -5,6 +5,9 @@
     <string name="inventory_overview">库存概览</string>
     <string name="inventory_summary_loading">正在读取库存…</string>
     <string name="inventory_summary">共 %1$d 种食材 · 临期 %2$d · 已过期 %3$d</string>
+    <string name="check_now">立即检查</string>
+    <string name="check_started">正在扫描库存，有临期食材时会发送通知</string>
+    <string name="notification_permission_denied">通知权限未开启，扫描仍会执行，但无法显示提醒</string>
     <string name="empty_inventory_title">冰箱还是空的</string>
     <string name="empty_inventory_hint">点击右下角的加号，记录第一份食材。</string>
 
@@ -39,4 +42,11 @@
     <string name="food_deleted">食材已删除</string>
     <string name="delete_food_title">删除食材</string>
     <string name="delete_food_message">确定删除“%1$s”吗？删除后无法恢复。</string>
+
+    <string name="expiry_channel_name">食材到期提醒</string>
+    <string name="expiry_channel_description">每天扫描库存并提醒临期或已经过期的食材</string>
+    <string name="expiry_notification_title">冰箱食材提醒</string>
+    <string name="expiry_notification_summary">已过期 %1$d 项，临期 %2$d 项</string>
+    <string name="expiry_notification_expired">已过期：%1$s</string>
+    <string name="expiry_notification_expiring">即将过期：%1$s</string>
 </resources>
