@@ -58,6 +58,11 @@ class DashboardActivity : AppCompatActivity() {
 
         val expiring = foods.count { DashboardDateUtils.isExpiringSoon(it.expireDate) }
         val expired = foods.count { DashboardDateUtils.isExpired(it.expireDate) }
+        val fresh = (foods.size - expiring - expired).coerceAtLeast(0)
+        binding.expiryChart.setData(fresh, expiring, expired)
+        binding.tvFreshCount.text = getString(R.string.chart_fresh, fresh)
+        binding.tvExpiringCount.text = getString(R.string.chart_expiring, expiring)
+        binding.tvExpiredCount.text = getString(R.string.chart_expired, expired)
         binding.tvSummary.text = getString(
             R.string.dashboard_summary,
             foods.size,

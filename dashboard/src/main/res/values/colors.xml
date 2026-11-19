@@ -10,4 +10,5 @@
     <color name="status_expiring">#FFB05B00</color>
     <color name="status_expired">#FFB3261E</color>
     <color name="status_unknown">#FF687078</color>
+    <color name="chart_track">#FFE1E6EC</color>
 </resources>

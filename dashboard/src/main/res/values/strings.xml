@@ -14,6 +14,11 @@
     <string name="empty_title">主 App 中还没有食材</string>
     <string name="empty_hint">到“冰箱管家”中添加食材后，这里会自动汇总。</string>
     <string name="food_meta">%1$s · %2$d 件 · %3$s</string>
+    <string name="chart_title">库存新鲜度</string>
+    <string name="chart_total_label">种食材</string>
+    <string name="chart_fresh">● 新鲜  %1$d</string>
+    <string name="chart_expiring">● 临期  %1$d</string>
+    <string name="chart_expired">● 已过期  %1$d</string>
     <string name="status_fresh">新鲜</string>
     <string name="status_expiring">%1$d 天后过期</string>
     <string name="status_expired">已过期</string>
