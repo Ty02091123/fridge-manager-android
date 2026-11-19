@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fridge.fridgeapp.R
 import com.fridge.fridgeapp.databinding.ItemRecipeBinding
-import com.fridge.fridgeapp.recipe.Recipe
 import com.fridge.fridgeapp.recipe.RecipeRecommendation
 import kotlin.math.roundToInt
 
 class RecipeAdapter(
-    private val onViewSteps: (Recipe) -> Unit
+    private val onViewSteps: (RecipeRecommendation) -> Unit
 ) : ListAdapter<RecipeRecommendation, RecipeAdapter.RecipeViewHolder>(RecipeDiffCallback()) {
 
     inner class RecipeViewHolder(private val binding: ItemRecipeBinding) :
@@ -39,7 +38,7 @@ class RecipeAdapter(
             }
             binding.tvExpiringBoost.visibility =
                 if (recommendation.usesExpiringFood) View.VISIBLE else View.GONE
-            binding.btnSteps.setOnClickListener { onViewSteps(recommendation.recipe) }
+            binding.btnSteps.setOnClickListener { onViewSteps(recommendation) }
         }
     }
 
