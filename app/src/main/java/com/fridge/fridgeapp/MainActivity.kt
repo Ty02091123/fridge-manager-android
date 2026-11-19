@@ -2,7 +2,10 @@ package com.fridge.fridgeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fridge.fridgeapp.database.AppDatabase
 import com.fridge.fridgeapp.databinding.ActivityMainBinding
@@ -31,9 +34,13 @@ class MainActivity : AppCompatActivity() {
         binding.rvFood.adapter = adapter
         binding.rvFood.layoutManager = LinearLayoutManager(this)
 
-        // 观察数据
-        viewModel.allFood.observe(this) {
-            adapter.submitList(it)
+        // Flow 在界面可见时持续收集，避免 Activity 销毁后继续更新列表。
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.allFood.collect { foods ->
+                    adapter.submitList(foods)
+                }
+            }
         }
 
         // 添加按钮，先写一个测试数据
