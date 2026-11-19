@@ -92,13 +92,54 @@
                 android:paddingBottom="96dp"
                 tools:listitem="@layout/item_food" />
 
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true" />
+
+            <LinearLayout
+                android:id="@+id/error_state"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="32dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/inventory_error_title"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@color/on_surface_variant" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_retry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/retry" />
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/empty_state"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="32dp">
+                android:padding="32dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"

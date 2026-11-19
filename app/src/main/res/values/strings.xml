@@ -4,6 +4,9 @@
     <string name="inventory_title">我的冰箱</string>
     <string name="inventory_overview">库存概览</string>
     <string name="inventory_summary_loading">正在读取库存…</string>
+    <string name="inventory_summary_error">库存读取失败</string>
+    <string name="inventory_error_title">暂时无法读取库存</string>
+    <string name="retry">重试</string>
     <string name="inventory_summary">共 %1$d 种食材 · 临期 %2$d · 已过期 %3$d</string>
     <string name="check_now">立即检查</string>
     <string name="check_started">正在扫描库存，有临期食材时会发送通知</string>

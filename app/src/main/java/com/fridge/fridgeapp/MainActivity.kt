@@ -20,6 +20,7 @@ import com.fridge.fridgeapp.databinding.ActivityMainBinding
 import com.fridge.fridgeapp.notification.ExpiryReminderScheduler
 import com.fridge.fridgeapp.ui.FoodAdapter
 import com.fridge.fridgeapp.util.ExpiryUtils
+import com.fridge.fridgeapp.viewmodel.InventoryUiState
 import com.fridge.fridgeapp.viewmodel.FoodViewModel
 import com.fridge.fridgeapp.viewmodel.FoodViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -69,14 +70,21 @@ class MainActivity : AppCompatActivity() {
         // Flow 在界面可见时持续收集，避免 Activity 销毁后继续更新列表。
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.allFood.collect { foods ->
-                    adapter.submitList(foods)
-                    renderInventorySummary(foods)
+                viewModel.uiState.collect { state ->
+                    when (state) {
+                        InventoryUiState.Loading -> renderLoading()
+                        is InventoryUiState.Content -> {
+                            adapter.submitList(state.foods)
+                            renderInventorySummary(state.foods)
+                        }
+                        is InventoryUiState.Error -> renderError(state.message)
+                    }
                 }
             }
         }
 
         binding.btnAdd.setOnClickListener { openFoodForm() }
+        binding.btnRetry.setOnClickListener { viewModel.retry() }
         binding.btnCheckNow.setOnClickListener { requestExpiryCheck() }
         binding.btnRecipes.setOnClickListener {
             startActivity(Intent(this, RecipeActivity::class.java))
@@ -132,6 +140,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun renderInventorySummary(foods: List<Food>) {
+        binding.progressBar.visibility = android.view.View.GONE
+        binding.errorState.visibility = android.view.View.GONE
+        binding.rvFood.visibility = android.view.View.VISIBLE
         val expiring = foods.count { ExpiryUtils.isExpiringSoon(it.expireDate) }
         val expired = foods.count { ExpiryUtils.isExpired(it.expireDate) }
         binding.tvSummary.text = getString(
@@ -142,6 +153,23 @@ class MainActivity : AppCompatActivity() {
         )
         binding.emptyState.visibility =
             if (foods.isEmpty()) android.view.View.VISIBLE else android.view.View.GONE
+    }
+
+    private fun renderLoading() {
+        binding.progressBar.visibility = android.view.View.VISIBLE
+        binding.errorState.visibility = android.view.View.GONE
+        binding.emptyState.visibility = android.view.View.GONE
+        binding.rvFood.visibility = android.view.View.GONE
+        binding.tvSummary.setText(R.string.inventory_summary_loading)
+    }
+
+    private fun renderError(message: String) {
+        binding.progressBar.visibility = android.view.View.GONE
+        binding.rvFood.visibility = android.view.View.GONE
+        binding.emptyState.visibility = android.view.View.GONE
+        binding.errorState.visibility = android.view.View.VISIBLE
+        binding.tvErrorMessage.text = message
+        binding.tvSummary.setText(R.string.inventory_summary_error)
     }
 
     private fun requestNotificationPermissionIfNeeded() {
