@@ -8,6 +8,7 @@
     <string name="check_now">立即检查</string>
     <string name="check_started">正在扫描库存，有临期食材时会发送通知</string>
     <string name="notification_permission_denied">通知权限未开启，扫描仍会执行，但无法显示提醒</string>
+    <string name="smart_recipes">按现有食材推荐菜谱</string>
     <string name="empty_inventory_title">冰箱还是空的</string>
     <string name="empty_inventory_hint">点击右下角的加号，记录第一份食材。</string>
 
@@ -49,4 +50,16 @@
     <string name="expiry_notification_summary">已过期 %1$d 项，临期 %2$d 项</string>
     <string name="expiry_notification_expired">已过期：%1$s</string>
     <string name="expiry_notification_expiring">即将过期：%1$s</string>
+
+    <string name="recipe_title">智能菜谱推荐</string>
+    <string name="recipe_intro">根据库存匹配度排序；能优先消耗临期食材的菜谱会获得额外加分。</string>
+    <string name="recipe_match">适配度 %1$d%%</string>
+    <string name="recipe_available_ingredients">已有：%1$s</string>
+    <string name="recipe_missing_ingredients">还需：%1$s</string>
+    <string name="recipe_all_ingredients_ready">主要食材已齐</string>
+    <string name="recipe_expiring_boost">优先消耗临期食材</string>
+    <string name="view_recipe_steps">查看做法</string>
+    <string name="recipe_empty_title">暂时没有推荐</string>
+    <string name="recipe_empty_hint">先在冰箱里添加至少一种食材，再回来看看。</string>
+    <string name="got_it">知道了</string>
 </resources>

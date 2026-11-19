@@ -78,6 +78,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener { openFoodForm() }
         binding.btnCheckNow.setOnClickListener { requestExpiryCheck() }
+        binding.btnRecipes.setOnClickListener {
+            startActivity(Intent(this, RecipeActivity::class.java))
+        }
 
         ExpiryReminderScheduler.schedule(this)
         requestNotificationPermissionIfNeeded()

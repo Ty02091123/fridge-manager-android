@@ -66,6 +66,14 @@
                         android:minWidth="0dp"
                         android:text="@string/check_now" />
                 </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_recipes"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/smart_recipes" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
