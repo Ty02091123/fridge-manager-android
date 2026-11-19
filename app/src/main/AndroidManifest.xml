@@ -4,6 +4,17 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <permission
+        android:name="com.fridge.fridgeapp.permission.READ_FOOD_DATA"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.fridge.fridgeapp.permission.WRITE_FOOD_DATA"
+        android:protectionLevel="signature" />
+
+    <queries>
+        <package android:name="com.fridge.dashboard" />
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -33,6 +44,13 @@
         <activity
             android:name=".RecipeDetailActivity"
             android:exported="false" />
+
+        <provider
+            android:name=".provider.FoodContentProvider"
+            android:authorities="com.fridge.fridgeapp.provider"
+            android:exported="true"
+            android:readPermission="com.fridge.fridgeapp.permission.READ_FOOD_DATA"
+            android:writePermission="com.fridge.fridgeapp.permission.WRITE_FOOD_DATA" />
     </application>
 
 </manifest>

@@ -21,9 +21,12 @@ interface FoodDao {
     @Query("SELECT * FROM food WHERE id = :foodId")
     fun getFoodById(foodId: Int): Flow<Food>
 
+    @Query("SELECT * FROM food WHERE id = :foodId")
+    suspend fun getFoodOnce(foodId: Int): Food?
+
     // 新增
     @Insert
-    suspend fun insertFood(food: Food)
+    suspend fun insertFood(food: Food): Long
 
     // 修改
     @Update
@@ -32,4 +35,7 @@ interface FoodDao {
     // 删除
     @Delete
     suspend fun deleteFood(food: Food)
+
+    @Query("DELETE FROM food WHERE expireDate < :today")
+    suspend fun deleteExpiredBefore(today: String): Int
 }
