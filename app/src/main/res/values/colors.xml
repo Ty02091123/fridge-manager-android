@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="screen_background">#FFF7F9F7</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="summary_card_background">#FFE7F4EA</color>
+    <color name="on_surface">#FF1A1C19</color>
+    <color name="on_surface_variant">#FF5F665F</color>
+    <color name="status_fresh">#FF2E7D4F</color>
+    <color name="status_expiring">#FFB35C00</color>
+    <color name="status_expired">#FFBA1A1A</color>
+    <color name="status_unknown">#FF6F6F6F</color>
 </resources>

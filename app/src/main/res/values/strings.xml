@@ -1,3 +1,42 @@
 <resources>
-    <string name="app_name">FridgeManager</string>
+    <string name="app_name">冰箱管家</string>
+
+    <string name="inventory_title">我的冰箱</string>
+    <string name="inventory_overview">库存概览</string>
+    <string name="inventory_summary_loading">正在读取库存…</string>
+    <string name="inventory_summary">共 %1$d 种食材 · 临期 %2$d · 已过期 %3$d</string>
+    <string name="empty_inventory_title">冰箱还是空的</string>
+    <string name="empty_inventory_hint">点击右下角的加号，记录第一份食材。</string>
+
+    <string name="add_food">添加食材</string>
+    <string name="edit_food">编辑食材</string>
+    <string name="food_form_hint">记录食材名称、分类、数量和保质期，临期信息会自动显示在首页。</string>
+    <string name="food_name">食材名称</string>
+    <string name="food_type">分类</string>
+    <string name="food_count">数量</string>
+    <string name="expire_date">过期日期</string>
+    <string name="expire_date_hint">点击日期区域可选择过期日期。</string>
+    <string name="save_food">保存食材</string>
+    <string name="back">返回</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+
+    <string name="food_type_vegetable">蔬菜</string>
+    <string name="quantity_format">数量：%1$d</string>
+    <string name="expiry_date_format">保质期至 %1$s</string>
+    <string name="status_fresh">新鲜</string>
+    <string name="status_expiring">%1$d 天后过期</string>
+    <string name="status_expired">已过期</string>
+    <string name="status_unknown">日期有误</string>
+
+    <string name="error_food_name">请输入食材名称</string>
+    <string name="error_food_type">请选择食材分类</string>
+    <string name="error_food_count">数量必须是大于 0 的整数</string>
+    <string name="error_expire_date">请选择过期日期</string>
+    <string name="food_added">食材已添加</string>
+    <string name="food_updated">食材已更新</string>
+    <string name="food_deleted">食材已删除</string>
+    <string name="delete_food_title">删除食材</string>
+    <string name="delete_food_message">确定删除“%1$s”吗？删除后无法恢复。</string>
 </resources>

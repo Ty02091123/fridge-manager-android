@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="food_types">
+        <item>蔬菜</item>
+        <item>水果</item>
+        <item>肉类</item>
+        <item>海鲜</item>
+        <item>蛋奶</item>
+        <item>主食</item>
+        <item>调味品</item>
+        <item>其他</item>
+    </string-array>
+</resources>
