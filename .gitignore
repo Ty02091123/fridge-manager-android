@@ -9,7 +9,10 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
+**/build/
 /captures
 .externalNativeBuild
 .cxx
 local.properties
+.idea/deepseek-sessions.json
+.idea/deepseek-sessions.json.bak
